@@ -7,6 +7,7 @@ import 'react-native-gesture-handler';
 import Homepage from './pages/Homepage';
 import Friends from './pages/Friends';
 import NewFriend from './pages/NewFriend';
+import EditFriend from './pages/EditFriend';
 import Maps from './pages/Maps';
 
 const Stack = createStackNavigator();
@@ -36,6 +37,14 @@ export default function Routes() {
           options={{
             headerTitleAlign: 'center',
             title: 'Adicionar amigo',
+          }}
+        />
+        <Stack.Screen
+          name='EditFriend'
+          component={EditFriend}
+          options={{
+            headerTitleAlign: 'center',
+            title: 'Editar amigo',
           }}
         />
         <Stack.Screen

@@ -6,6 +6,10 @@ export function index() {
   return ref.orderByKey();
 }
 
+export function getFriend(childKey) {
+  return ref.child(childKey);
+}
+
 export async function create(dataObject) {
   return await ref.push(dataObject);
 }

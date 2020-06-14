@@ -90,6 +90,15 @@ export default function Friends({ navigation }) {
               <TouchableOpacity onPress={() => handleDelete(item.id)}>
                 <Text>Excluir</Text>
               </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('EditFriend', {
+                    FriendID: item.id,
+                  })
+                }
+              >
+                <Text>Editar</Text>
+              </TouchableOpacity>
             </View>
           )}
           keyExtractor={(item) => `${item.id}`}
