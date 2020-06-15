@@ -3,6 +3,8 @@ import { View, Text, TextInput, Button, Alert } from 'react-native';
 
 import { create } from '../../controllers/FriendController';
 
+import { getLocationByAddress } from '../../utils/functions';
+
 import styles from './styles';
 
 export default function NewFriend({ navigation }) {
@@ -10,8 +12,14 @@ export default function NewFriend({ navigation }) {
   const [telefone, setTelefone] = useState('');
   const [endereco, setEndereco] = useState('');
 
-  function handleSubmit(friend) {
-    create(friend)
+  async function handleSubmit() {
+    const location = await getLocationByAddress(endereco);
+    create({
+      nome: nome,
+      telefone: telefone,
+      endereco: endereco,
+      coords: location,
+    })
       .then(() =>
         Alert.alert(
           '',
@@ -52,13 +60,7 @@ export default function NewFriend({ navigation }) {
       <Button
         style={styles.submitButton}
         title='Salvar'
-        onPress={() =>
-          handleSubmit({
-            nome: nome,
-            telefone: telefone,
-            endereco: endereco,
-          })
-        }
+        onPress={() => handleSubmit()}
       />
     </View>
   );
